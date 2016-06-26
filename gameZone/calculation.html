@@ -1,0 +1,249 @@
+</<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+ <style>
+             .page
+             {
+                 
+                 position: absolute;
+                 padding: 30px 10px 10px 10px;
+
+                 width:300px;
+                 height:300px;
+                 border:1px solid black;
+                 background-color: white;
+             }
+             .uno{
+                 z-index: 100;
+                    text-align:center;
+             }
+             .uno #start
+             {
+                position:relative;
+                top:50px;
+          
+                width: 260px;
+             }
+             .secondo #answer{
+                
+                 margin-top: 10px;
+                 margin-left:7px;
+                  
+             }
+             #time{
+                 text-align: center;
+             }
+             #start{
+                 margin-left: 15px;
+                 margin-top:10px;
+                 width: 90%;
+             }
+
+        
+         </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>My games</h1>
+
+            <p>Here is the list of my littles "games"</p>
+
+        </div>
+        <nav class="navbar navbar-inverse ui">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="http://pacee.net">Pacee.net</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <!-- <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li> 
+      <li><a href="#">Page 3</a></li> -->
+                </ul>
+            </div>
+        </nav><div class="row">
+             <div class="col-sm-4"></div>
+         <div class="col-sm-4 game">
+          <div class="page uno">
+            <h3>My maths</h3>
+            <button id="start" type="button" class="btn btn-default">start</button>
+        </div>
+        
+      
+        <div class="page secondo">
+            <div class="panel panel-default">
+                <div class="panel-heading">Question <span id="demo1">0</span>/10 </div>  
+                <div class="panel-body"><span id="question">Question</span></div>  
+           </div>
+            
+            <div id="time"><span id="demo">0</span> secondes</div>
+            <div id="answer">
+            <input type="text" class="form-control" placeholder="answer" id="response">
+            <button id="verify" type="button" class="btn btn-default">Verify</button>
+            </div>
+        </div>
+                
+                
+                 
+        <div class="page end">
+            <h3>You finished</h3>
+            time: <span id="gtime">0</span> s
+            <br>
+            mistaques:<span id="mistakes">0</span>
+             <button id="again" type="button" class="btn btn-default">Do again</button>
+        </div>
+        <div class="col-sm-4"></div>
+        </div></div>
+                      <script>
+                          /**Utils
+                           * 
+                           */
+                          
+                          var glevel = 1;
+/**
+ * Return a random
+ */
+function random(max){
+    return Math.floor((Math.random() * max) + 1);
+}
+                          /**
+ *generate one opération
+ */
+function generateOperation()
+{
+    return ['+','*'][random(1)];
+}
+/**
+ * generate one question
+ */
+ 
+function generateQuestion()
+{
+    var a = random(glevel*10);
+    var b = random(glevel*10);
+    var op = a+generateOperation()+b;
+    var solution = Math.ceil(eval(op));
+    return {question:op,answer:solution};
+}
+
+
+                           /**
+                          * Timer
+                          */
+                         var time = 0;
+                         var level=1;
+                            var myVar = null;
+                            var mistakes = 0;
+                            
+                            
+                          var currentQuestion = 0;
+                          /**
+                           * Panels
+                           */
+                          $(".secondo").hide();
+                          $(".end").hide();
+                         
+                         
+                         /**
+                          * event click on start
+                          */
+                         $("#start").click(function()
+                         {
+                             
+                          $(".uno").hide();
+                           $(".secondo").show();
+                           //start timer of questions 
+                                                    myVar = setInterval(myTimer, 1000);
+                                             function myTimer() {
+                            $("#demo").text(time++);
+                        }
+                        
+                            nextQuestion();
+                         });
+                         
+                         function nextQuestion()
+                         {
+                                                     //get a question
+                        currentQuestion = generateQuestion();
+                        //show the new question
+                        $("#question").text(currentQuestion.question)
+                         }
+                         /**
+                          * Test if question is correct ## check if error
+                          */
+                         $("#verify").click(
+                                 function()
+                         {
+                              val=parseInt($("#response").val());
+                              //error check
+                              if(val==currentQuestion.answer)
+                              {
+                                        
+                                        //up display of number   
+                                     $("#demo1").text(level++);
+                                     //generatae next question
+                                      nextQuestion();
+                                      // erase value
+                                      $("#response").val("").focus();
+                                      //if error
+                                       $("#answer").removeClass("has-error");
+                                }
+                                else
+                                {
+                                //if error
+                                    
+                                  mistakes++;  
+                                   $("#response").val("").focus();
+                                   $("#answer").addClass("has-error");
+                                }
+                                  
+                                  
+                             
+                              if(level==11)
+                              {
+                                      $(".secondo").hide();
+                                     $(".end").show();
+                                    endThis();
+                              }
+                         }
+                                 );
+                         
+                         function endThis()
+                         {
+                             clearInterval(myVar);
+                         if($(".end").is(':not(:hidden)'))
+               
+                       
+                         $("#gtime").text(time);
+                         $("#mistakes").text(mistakes);
+                            }
+                         
+                         $("#again").click(function(){
+                         $(".end").hide();
+                         time=0;
+                           $(".secondo").show();
+                           //start timer of questions 
+                                                    myVar = setInterval(myTimer, 1000);
+                                             function myTimer() {
+                            $("#demo").text(time++);
+                        }
+                        
+                            nextQuestion();
+                                    
+    }
+                                 );
+                         
+                         
+                        
+                                            </script>
+        </div>
+</body>
+
+
+</html>

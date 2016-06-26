@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>game</title>
+
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <style type="text/css">
+body{
+  background: #eee;
+  padding: 100px;
+  color:#7f8c8d;
+}
+
+
+
+#container {
+margin: 20px auto;
+width: 670px;
+border:none;
+}
+
+
+#container input {
+
+width: 657px;
+
+}
+
+#keyboard {
+margin: 0;
+padding: 0;
+list-style: none;
+
+}
+#end table{
+    background-color: #fff;
+}
+#end tbody{
+    background-color: #ecf0f1;
+}
+#message{
+    color: #e74c3c;
+}
+        
+    #keyboard li {
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background:#fff;
+    opacity:0.6;
+    border: 1px solid #f9f9f9;
+  
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    }
+        .capslock, .tab, .left-shift {
+        clear: left;
+        }
+            #keyboard .tab, #keyboard .delete {
+            width: 70px;
+            }
+            #keyboard .capslock {
+            width: 80px;
+            }
+            #keyboard .return {
+            width: 77px;
+            }
+            #keyboard .left-shift {
+            width: 95px;
+            }
+            #keyboard .right-shift {
+            width: 109px;
+            }
+        .lastitem {
+        margin-right: 0;
+        }
+        .uppercase {
+        text-transform: uppercase;
+        }
+        #keyboard .space {
+        clear: left;
+        width: 657px;
+        }
+        .on {
+        display: none;
+        }
+        #keyboard li:hover {
+        position: relative;
+        top: 1px;
+        left: 1px;
+        border-color: #e5e5e5;
+        cursor: pointer;
+        }
+        
+      /*  #keyboard .auriculaireG
+        {
+          background-color: purple;  
+        }
+       #keyboard .annulaireG
+        {
+           background-color: red;  
+        }
+        
+        #keyboard .majeurG
+        {
+            background-color: yellow;  
+        }
+        
+       #keyboard .indexG
+        {
+            background-color: #40e0d0;
+;  
+        }
+        
+        #keyboard .pouceG
+        {
+            background-color: blue;  
+        }
+        
+        
+                #keyboard .auriculaireD
+        {
+          background-color: purple;  
+        }
+       #keyboard .annulaireD
+        {
+           background-color: red;  
+        }
+        
+        #keyboard .majeurD
+        {
+            background-color: yellow;  
+        }
+        
+       #keyboard .indexD
+        {
+            background-color: #40e0d0;
+;  
+        }
+        
+        #keyboard .pouceD
+        {
+            background-color: blue;  
+        }
+        $( "p" ).addClass( "myClass yourClass" );*/
+        .red{
+             background-color: #e74c3c !important;  
+        }
+        .blue{
+             background-color: #2e8ece !important; 
+        }
+        .yellow{
+            background-color: yellow !important;  
+        }
+        .purple{
+           background-color: purple !important; 
+        }
+        .turquoise{
+            background-color: #40e0d0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href=".">HOME</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://pacee.net">Pacee.net</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+ <div id="uno">
+     <div class="row">
+	
+
+		<div class="col-sm-6 col-sm-push-3 text-center">
+                        <h3>Dactylo</h3>
+                        <button id="start" type="button" class="btn btn-default">start</button>
+                        <br>
+                        Ce petit "programme" est un test, entièrement basé sur
+                        le programme dactylo de Gerard Ledu (http://gerard.ledu.free.fr/)
+                    </div>
+                     </div>
+                        </div>
+<div id="dactylo">
+
+
+
+<div class="row">
+	
+
+		<div class="col-sm-6 col-sm-push-3">	
+<div id="container">
+    <div class="row">
+	
+	<div class="col-sm-4 col-sm-push-4 text-center">	
+    Niveau <span id="chapter"> </span>
+	</div>
+
+    </div>
+	
+	 <input class="form-control"  id="question" type="text" disabled>
+    <br>	
+    
+	 <input class="form-control" type="text" id="answer"> 
+	 <span class="glyphicon glyphicon-volume-off" id="soundOff" title="Bloquer le son"></span>
+	 <br>
+    <span id="message"class="text-center"> </span>
+
+
+       <div class="row">
+	
+	<div class="col-sm-6 text-center">	
+ <span id="gauche">gauche</span>
+	</div>
+	
+	<div class="col-sm-6 text-center">	
+  <span id="droite">droite</span>
+	</div>
+	</div>
+    <ul id="keyboard">
+        <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+        <li class="symbol auriculaireG"><span class="off">1</span><span class="on">!</span></li>
+        <li class="symbol annulaireG"><span class="off">2</span><span class="on">@</span></li>
+        <li class="symbol majeurG"><span class="off">3</span><span class="on">#</span></li>
+        <li class="symbol indexG"><span class="off">4</span><span class="on">$</span></li>
+        <li class="symbol indexG"><span class="off">5</span><span class="on">%</span></li>
+        <li class="symbol indexD"><span class="off">6</span><span class="on">^</span></li>
+        <li class="symbol indexD"><span class="off">7</span><span class="on">&amp;</span></li>
+        <li class="symbol majeurD"><span class="off">8</span><span class="on">*</span></li>
+        <li class="symbol annulaireD"><span class="off">9</span><span class="on">(</span></li>
+        <li class="symbol auriculaireD"><span class="off">0</span><span class="on">)</span></li>
+        <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+        <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+        <li class="delete lastitem">delete</li>
+        <li class="tab">tab</li>
+        <li class="letter auriculaireG">a</li>
+        <li class="letter annulaireG">z</li>
+        <li class="letter majeurG">e</li>
+        <li class="letter indexG">r</li>
+        <li class="letter indexG">t</li>
+        <li class="letter indexD">y</li>
+        <li class="letter indexD">u</li>
+        <li class="letter majeurD">i</li>
+        <li class="letter annulaireD">o</li>
+        <li class="letter auriculaireD">p</li>
+        <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+        <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+        <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+        <li class="capslock">caps lock</li>
+        <li class="letter auriculaireG">q</li>
+        <li class="letter annulaireG">s</li>
+        <li class="letter majeurG">d</li>
+        <li class="letter indexG">f</li>
+        <li class="letter indexG">g</li>
+        <li class="letter indexD">h</li>
+        <li class="letter indexD">j</li>
+        <li class="letter majeurD">k</li>
+        <li class="letter annulaireD">l</li>
+         <li class="letter auriculaireD">m</li>
+        <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+        <li class="return lastitem">return</li>
+        <li class="left-shift">shift</li>
+        <li class="letter auriculaireG">w</li>
+        <li class="letter annulaireG">x</li>
+        <li class="letter majeurG">c</li>
+        <li class="letter indexG">v</li>
+        <li class="letter indexG">b</li>
+        <li class="letter indexD">n</li>
+        <li class="letter indexD">:</li>
+        <li class="symbol majeurD"><span class="off">,</span><span class="on">&lt;</span></li>
+        <li class="symbol annulaireD"><span class="off">.</span><span class="on">&gt;</span></li>
+        <li class="symbol auriculaireD"><span class="off">/</span><span class="on">?</span></li>
+        <li class="right-shift lastitem">shift</li>
+        <li class="space lastitem pouceD pouceG">&nbsp;</li>
+    </ul>
+<br>
+
+	
+ Caractères	<span id="chars">0</span>
+ fautes	:<span id="mistakes">0</span>(<span id="mistakespc">0</span>%)
+    temps :	<span id="time">0</span> s
+	Vitesse :	<span id="seconds" >0</span> car/min
+	
+	</div>
+
+
+
+
+</div>
+
+</div>
+</div>
+  <div id="name">
+                        <h3>Your name</h3>
+                        <input type="text" class="form-control" placeholder="you name" id="name">
+                        <br> <button id="save" type="button" class="btn btn-default">save</button>
+                    
+</div>
+
+ <div id="end">
+             Caractères	<span id="chars">0</span>
+ fautes	:<span id="mistakes">0</span>(<span id="mistakespc">0</span>%)
+    temps :	<span id="time">0</span> s
+	Vitesse :	<span id="seconds" >0</span> car/min
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Date</th>
+                                    <th>Niveau</th>
+                                    <th>Caract.</th>
+                                    <th>Fautes</th>
+                                    <th>Temps</th>
+                                    <th>Car/min</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leader">
+
+                            </tbody>
+                        </table>
+                        <button id="again" type="button" class="btn btn-default">Do again</button>            
+                    </div>
+<script type="text/javascript">
+var sound=true;
+var snd = new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");  
+  
+$("#end").hide()
+$("#name").hide()
+$("#dactylo").hide()
+
+/**
+ * DATA STORAGE
+ */
+ 
+ 
+ 
+/**
+ * DATA STORAGE//COOKIES
+ */
+
+
+/*
+ * set cookie
+ * @param {type} key the key
+ * @param {type} value the information
+ * @returns {undefined}
+ */
+
+function setCookie(key, value) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
+
+/**
+ * 
+ * @param {type} key of element
+ * @returns {getCookie.keyValue|Array} the value
+ */
+function getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+}
+
+
+/**
+ * DATA STORAGE//LOCALSTORAGE
+ */
+function setLocalSaved(key, value)
+{
+    localStorage.setItem(key, JSON.stringify(value));
+}
+function getLocalSaved(key)
+{
+    return JSON.parse(localStorage.getItem(key));
+}
+
+
+/**
+ * end level 
+ * hide dactylo
+ * stop timer
+ **/
+
+// nom date niveau char fautes temps car mot min
+
+var leaderboard = null;
+var saved = getLocalSaved('leader');
+
+
+
+
+if (saved)
+{
+    leaderboard = saved;
+    refreshLB();
+}
+else
+    leaderboard = [];
+    
+    
+     function endThis()
+    {
+        $("#dactylo").hide();
+        $("#name").show();
+        clearInterval(myVar);
+
+    }
+    
+    function refreshLB()
+{
+    var total = "";
+    var txt = "";
+    for (var i = 0; i < leaderboard.length; i++)
+    {
+        console.log(leaderboard[i])
+        txt = "<tr><td>" + leaderboard[i].name + "</td><td>"+ new Date(leaderboard[i].date).toLocaleDateString() +  "</td><td> Niveau" + leaderboard[i].level + "</td><td>" + leaderboard[i].char + "</td><td> " + leaderboard[i].fautes + "</td><td>" + leaderboard[i].time + "</td><td>" + leaderboard[i].speed + "</td></tr>";
+        total += txt;
+    }
+
+    $("#leader").html(total);
+
+
+
+}
+  $("#save").click(function () {
+        $("#name").hide();
+        $("#end").show();
+        var name = $("#name #name").val();
+        name = name ? name : "unknown";
+        var save = {name: name, time: seconds, level: chapitre, char:chars, fautes: mistakes, date: new Date(), speed:(((chars/seconds)*60)|0)};
+        setCookie('name', name);
+        console.log(save);
+        
+        leaderboard.push(save);
+        if (leaderboard.length > 10)
+            leaderboard.shift();
+
+        //alert("save")
+         leaderboard.reverse();
+       /** leaderboard.sort(function (a, b) {
+            return b.date - b.date
+        })*/
+        refreshLB();
+        setLocalSaved('leader', leaderboard);
+
+    $("#end #chars").text(chars);$("#end #mistakes").text(mistakes);$("#end #mistakespc").text(((mistakes/chars)*100)|0);$("#end #time").text(seconds) ;$("#end #seconds").text(((chars/seconds)*60)|0);
+    });
+/* show name
+ * show end
+ */
+//keyboard binding
+var BelgianKeyBoad  = {}
+var keyb = {}
+
+/*
+* key board
+*/
+ var fingers = ['pouce','index','majeur','annulaire','auriculaire']
+ var colors = ['blue','turquoise','yellow','red','purple']
+ var doight = "";
+ var classJ = "";
+//timer
+var myVar = null;
+var chapitre=1;
+var seconds = 0
+var index = 0;
+var idx=0;
+var buffSize = 71;
+var mistakes = 0;
+var chars = 0;
+// text writen by user
+var user=""
+var userTmp=""
+//in question 
+var res = ""
+
+var lines = null;
+/**
+ * Chargement du texte
+ */
+var text= "";
+ /*   $.get( "text.txt", function( data ) {
+   text =  data ;
+   initExs()
+next()
+});*/
+/**
+ * Ulits functions
+ */
+//load file
+function load(name)
+{console.log("2")
+console.log("exos/EXO"+((name<10)?"0":"")+name+".TXT")
+   
+    $.get("exos/EXO"+((name<10)?"0":"")+name+".TXT", function( data ) {
+   text =  data ;
+   initExs()
+   
+});
+}
+
+//init chap
+function initExs()
+{
+    console.log("3")
+    console.log(text)
+    lines  = text.split('\n');
+    next()
+}
+/**
+ * Affichage ligne par ligne
+ */
+ function next()
+ {
+      $("#chapter").text(chapitre)
+     console.log("4")
+     console.log(res)
+     //res = text.slice(index,index+buffSize);
+     res= lines[index]
+     $("#question").val(res)
+     
+     //index+=buffSize
+     
+        index++
+        if(index==lines.length-1)
+        $("#message").text("Dernière ligne du chapitre")
+         else
+          $("#message").text("")
+     if(index==lines.length)
+     {
+        
+        var r = confirm("Fin de chapitre , voulez vous aller au chapitre suivant?");
+if (r == true) {
+    chapitre++
+    index=0
+    load(chapitre)
+    
+} else {
+   endThis()
+}
+     }
+       
+ }
+ 
+/**
+ * Events
+ */
+/**
+ * Check des réponses
+ */
+ $( "#answer" ).on('input',function(e){
+     
+    
+      /**
+       * Chaque fois qu'un changement a lieu
+       * on verifie le contenu 
+       * et on regarde s'il correspond
+       */
+     userTmp=this.value;
+     //on compare la même portions
+     var real = res.slice(0,userTmp.length)
+     
+     //test
+    // console.log("user:"+userTmp)
+//on compare la portion originale à celle en cours
+if(userTmp==real && userTmp.length > user.length ) 
+{ $("#container").removeClass("has-error")
+     keyBReset()
+    //le nombre de caractère correcte
+    chars++;
+      $("#chars").text(chars)
+      
+    //si c'est juste on enregistre   
+    user = userTmp;
+   
+   console.log(real.length+ " : " + res.length)
+    // portions suivant
+    if(user.length == res.length-1)
+     {
+        //  console.log("new line");
+         //chargement new line
+         next();
+         //reset ui
+         $("#answer").val("");
+         //reset valeur juste
+         user="";
+     }
+}
+    else
+    {
+        if(sound)
+         snd.play();
+         
+        mistakes++;
+    $("#answer").val(user)
+    $("#container").addClass("has-error")
+    // console.log("nope")
+    }
+    // le doighté
+     fingerPrint(res.charAt(user.length))
+      $("#mistakes").text(mistakes)
+    
+     $("#mistakespc").text(((mistakes/chars)*100)|0)
+});
+
+
+function fingerPrint(char)
+{
+    $(".symbol").removeClass("classJ")
+      $("#gauche,#droite").text("")
+    // console.log(char)
+    var finger = BelgianKeyBoad[char];
+  //  console.log(fingers[BelgianKeyBoad[char].finger-1]);
+    if(finger)
+    {
+        doight =fingers[finger.finger-1];
+        classJ = colors[finger.finger-1];
+        //Left
+        if(!finger.side)
+        {
+           $("#gauche").text(doight)
+            doight = "."+doight+"G"
+           
+           //right 
+        }else
+        {
+             $("#droite").text(doight)
+              doight = "."+doight+"D";
+        }
+        
+        keyBSet(doight,classJ);
+        // console.log(doight + " " +classJ)
+       
+       
+    }
+   
+    
+}
+function keyBSet(keyB, value)
+{
+//    console.log(keyB)
+    $( keyB ).addClass( value );  
+}
+/**
+ * change la couleur du keyboard
+ */
+function keyBReset()
+{
+    $( doight).removeClass( classJ );  
+}
+
+
+
+$(window).click(function() {
+  $( "#answer" ).focus();
+});
+
+ //levels changing 
+ //level 1 init
+ /*$(function() {
+  // Handler for .ready() called.
+console.log("1")
+  load(chapitre)
+
+
+});*/
+
+
+/**
+ *  liaison entre les touches et les doight
+ */
+
+function bind(keys,finder) //finger {side:'left'/'right',finger:[1,5] ) better for traduction
+{
+    var res = keys.split("");
+    for(var c in res)
+    {
+     BelgianKeyBoad[res[c]] = finder 
+    }
+    console.log("bond")
+}
+
+//Gauche
+//l'auriculaire
+bind("aAqQwW<>\&1|2@é",{side:0,finger:5})
+//l'ANULAIRE
+bind("2é@zZsSxX",{side:0,finger:4})
+//MAJEUR
+bind('3"#EeDdCc',{side:0,finger:3})
+//index
+bind("4'RrFfVv5(TtGgBb",{side:0,finger:2})
+//pouce
+bind(" ",{side:0,finger:1})
+
+//Droite
+//l'auriculaire
+bind("à0pPmM=+ù%µ£$*^¨[]`´~",{side:1,finger:5})
+//l'ANULAIRE
+bind("oOlL:/ç9",{side:1,finger:4})
+//MAJEUR
+bind('iIkK;.!8',{side:1,finger:3})
+//index
+bind("yYhHnN§6è7uUJj,?",{side:1,finger:2})
+//pouce
+bind(" ",{side:1,finger:1})
+
+
+$("#soundOff").click(function()
+{
+    console.log(this)
+    sound=!sound;
+    if(!sound)
+    {
+    $(this).removeClass("glyphicon-volume-off")
+    $(this).addClass("glyphicon-volume-down")
+    }else{
+    $(this).removeClass("glyphicon-volume-down")
+    $(this).addClass("glyphicon-volume-off")   
+    }
+});
+ $("#start").click(function ()
+        {
+
+            $("#uno").hide();
+             $("#dactylo").show();
+            //start timer of questions 
+           
+           
+
+             load(chapitre)
+             myVar = setInterval(myTimer, 1000);
+
+            function myTimer() {
+                seconds++;
+                $("#time").text(seconds)
+                 $("#seconds").text(((chars/seconds)*60)|0)
+            }
+        });
+        
+        window.addEventListener("beforeunload", function (e) {
+  var confirmationMessage = "Finishez le niveau pauvre fou(folle) !";
+
+ 
+   if($("#dactylo").is(':not(:hidden)'))
+   {
+       console.log("suck blyat")
+        e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+ 
+  return confirmationMessage;              // Gecko, WebKit, Chrome <34
+   }
+});
+
+$("#end #again").click(function () {
+    location.reload();
+    }
+    );
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41036023-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

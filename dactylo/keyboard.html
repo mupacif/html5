@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     
+    <title>Online Keyboard</title>
+   
+    <style type="text/css">
+        * {
+margin: 0;
+padding: 0;
+}
+body {
+font: 71%/1.5 Verdana, Sans-Serif;
+background: #eee;
+}
+#container {
+margin: 100px auto;
+width: 688px;
+}
+#write {
+margin: 0 0 5px;
+padding: 5px;
+width: 671px;
+height: 200px;
+font: 1em/1.5 Verdana, Sans-Serif;
+background: #fff;
+border: 1px solid #f9f9f9;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+}
+#keyboard {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+        
+    #keyboard li {
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #f9f9f9;
+    opacity: 0.5;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    }
+        .capslock, .tab, .left-shift {
+        clear: left;
+        }
+            #keyboard .tab, #keyboard .delete {
+            width: 70px;
+            }
+            #keyboard .capslock {
+            width: 80px;
+            }
+            #keyboard .return {
+            width: 77px;
+            }
+            #keyboard .left-shift {
+            width: 95px;
+            }
+            #keyboard .right-shift {
+            width: 109px;
+            }
+        .lastitem {
+        margin-right: 0;
+        }
+        .uppercase {
+        text-transform: uppercase;
+        }
+        #keyboard .space {
+        clear: left;
+        width: 681px;
+        }
+        .on {
+        display: none;
+        }
+        #keyboard li:hover {
+        position: relative;
+        top: 1px;
+        left: 1px;
+        border-color: #e5e5e5;
+        cursor: pointer;
+        }
+        
+        #keyboard .auriculaireG
+        {
+          background-color: purple;  
+        }
+       #keyboard .annulaireG
+        {
+           background-color: red;  
+        }
+        
+        #keyboard .majeurG
+        {
+            background-color: yellow;  
+        }
+        
+       #keyboard .indexG
+        {
+            background-color: #40e0d0;
+;  
+        }
+        
+        #keyboard .pouceG
+        {
+            background-color: blue;  
+        }
+        
+        
+                #keyboard .auriculaireD
+        {
+          background-color: purple;  
+        }
+       #keyboard .annulaireD
+        {
+           background-color: red;  
+        }
+        
+        #keyboard .majeurD
+        {
+            background-color: yellow;  
+        }
+        
+       #keyboard .indexD
+        {
+            background-color: #40e0d0;
+;  
+        }
+        
+        #keyboard .pouceD
+        {
+            background-color: blue;  
+        }
+    </style>
+</head>
+<body>
+ 
+
+  <div class="page name" id="name">
+                        <h3>Your name</h3>
+                        <input type="text" class="form-control" placeholder="you name" id="name">
+                        <br> <button id="save" type="button" class="btn btn-default">save</button>
+                    </div>
+
+ 
+
+
+ <div class="page end" id="end">
+                        time: <span id="gtime">0</span> s
+                        <br>
+                        mistaques:<span id="mistakes">0</span>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>time</th>
+                                    <th>date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leader">
+
+                            </tbody>
+                        </table>
+                        <button id="again" type="button" class="btn btn-default">Do again</button>            
+                    </div>
+
+</body>
+</html>
